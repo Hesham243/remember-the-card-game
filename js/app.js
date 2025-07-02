@@ -2,99 +2,59 @@
 
 
 /*---------- Variables (state) ---------*/
-let gameState
-let roundsCompleted
-let maxSelection = 2
-let correctCards = []
-let playerSelection = []
-let allCards = [
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-  {
-    id: '',
-    isSelected: false,
-    isCorrect: false,
-    isRevealed: false,
-  },
-]
-// console.log(allCards)
+let highlightedCards = [];
+let playerSelection = [];
+let roundCount = 0;
 
 
 
 /*----- Cached Element References  -----*/
-const cardElements = document.querySelectorAll('.card')
-// console.log(cardElements)
+const cardElements = document.querySelectorAll('.card');
+const playButtonElement = document.querySelector('.play-button');
+const displayContainer = document.querySelector('.display-container');
 
 
 
 /*-------------- Functions -------------*/
+// Reset all cards and selections
+function resetCards() {
+  cardElements.forEach(card => card.classList.remove('highlight'));
 
-
-// Assign each element.id to a matching allCards[i].id
-for (let i = 0; i < allCards.length; i++) {
-  allCards[i].id = cardElements[i].id;
 }
-// console.log(allCards)
-  
 
 
-//  This loop iterate 2 times and push 2 random numbers (0-5) in correctCards list and the numbers represent the correct card indexs
-for (let i = 0; i < 2; i++){
-  let ind = Math.floor(Math.random() * 6)
-  correctCards.push(ind)
-  allCards[ind].isCorrect = true
+// Function to get two random unique cards
+function getTwoRandomCards() {
+  const indices = new Set();
+  while (indices.size < 2) {
+    const randomIndex = Math.floor(Math.random() * cardElements.length);
+    indices.add(randomIndex);
+  }
+  return [...indices];
 }
-// console.log(correctCards)
-// console.log(allCards)
-
 
 
 
 
 /*----------- Event Listeners ----------*/
+// Handle Play Button
+playButtonElement.addEventListener('click', () => {
+  resetCards();
 
-/* 
-When a card is clicked:
-If playerSelection.length !== 2, the card's id is pushed to playerSelection list.
-If playerSelection.length === 2, the return exits the function which is handling the click event, and nothing else in that click handler runs.
-*/
-cardElements.forEach( (element) => {
-  element.addEventListener('click', (event) => {
-    
-    if (playerSelection.length !== 2){
-      playerSelection.push(event.target.id)
+  // Randomly highlight two cards
+  const indices = getTwoRandomCards();
+  highlightedCards = indices;
 
-    }else{
-      return
-    }
-    
-  })
-})
+  indices.forEach(i => {
+    cardElements[i].classList.add('highlight');
+  });
+
+  // Show highlights for 2 seconds, then hide
+  setTimeout(() => {
+    cardElements.forEach(card => card.classList.remove('highlight'));
+  }, 2000);
+
+});
+
+
+

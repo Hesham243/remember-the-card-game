@@ -1,0 +1,16 @@
+.card {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  cursor: pointer;
+}
+
+/* .red-card {
+  background-color: rgb(247, 98, 98);
+} */
+
+/* Highlighted card */
+.highlight {
+  background-color: yellow;
+}

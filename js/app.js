@@ -19,20 +19,31 @@ const displayContainer = document.querySelector('.display-container');
 // Reset all cards and selections
 function resetCards() {
   cardElements.forEach(card => card.classList.remove('highlight'));
-
+  playerSelection = [];
 }
 
 
 // Function to get two random unique cards
 function getTwoRandomCards() {
-  const indices = new Set();
-  while (indices.size < 2) {
-    const randomIndex = Math.floor(Math.random() * cardElements.length);
-    indices.add(randomIndex);
+  let randomIndices = [];
+
+  while (randomIndices.length < 2) {
+    let randomNumber = Math.floor(Math.random() * cardElements.length);
+
+    // If this number is not already in the list, add it
+    if (!randomIndices.includes(randomNumber)) {
+      randomIndices.push(randomNumber);
+    }
   }
-  return [...indices];
+
+  return randomIndices;
 }
 
+
+// Check if player's selection is correct
+function checkSelection() {
+  
+}
 
 
 
@@ -54,7 +65,21 @@ playButtonElement.addEventListener('click', () => {
     cardElements.forEach(card => card.classList.remove('highlight'));
   }, 2000);
 
+  displayContainer.textContent = 'Now, pick the cards!';
 });
 
 
 
+// Handle card click
+cardElements.forEach(card => {
+  card.addEventListener('click', () => {
+    if (playerSelection.length < 2 && !playerSelection.includes(card)) {
+      playerSelection.push(card);
+      card.style.border = '2px solid blue';
+
+      if (playerSelection.length === 2) {
+        checkSelection();
+      }
+    }
+  });
+});

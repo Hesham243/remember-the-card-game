@@ -20,7 +20,7 @@ The game encourages focus, memory skill, and fast recall!
 
 ### ▶️ Live Demo
 
-👉 [Play the game](https://your-github-username.github.io/remember-the-card/) *(Replace with your actual link)*
+👉 [Play the game](https://hesham243.github.io/remember-the-card-game/)
 
 ### 🧾 How to Play
 

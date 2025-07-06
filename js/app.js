@@ -10,7 +10,7 @@ let clickable = false;
 
 
 /*----- Cached Element References  -----*/
-const cardElements = document.querySelectorAll('.cardName');
+const cardElements = document.querySelectorAll('.cardItem');
 const playButtonElement = document.querySelector('.play-button');
 const displayContainer = document.querySelector('.display-container');
 
@@ -112,7 +112,7 @@ playButtonElement.addEventListener('click', () => {
   setTimeout(() => {
     cardElements.forEach(card => card.classList.remove('highlight'));
     clickable = true; // Allow clicking now
-    displayContainer.textContent = 'Now, pick the cards!';
+    displayContainer.innerHTML = '<p class="result-status"> Now, pick the cards </p>';
   }, 200);
 
 });

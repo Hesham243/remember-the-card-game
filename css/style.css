@@ -1,5 +1,3 @@
-
-/* Basic reset and body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
@@ -10,23 +8,54 @@ body {
   align-items: center;
 }
 
-/* Nav bar */
 .nav-bar {
   width: 100%;
   padding: 10px;
   background-color: #333;
   color: white;
-  text-align: left;
+  display: flex;
+  
 }
 
-/* Game title */
+.logo {
+  margin-left: 15px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.nav-bar li {
+  float: left;
+}
+
+.nav-bar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-bar li a:hover {
+  background-color: #111;
+}
+
 .game-title {
+  background-color: aquamarine;
+  width: 610px;
   font-size: 28px;
   font-weight: bold;
   margin: 20px 0;
+  text-align: center;
 }
 
-/* Main containers */
 .container-a {
   width: 80%;
   display: flex;
@@ -40,14 +69,13 @@ body {
   gap: 50px;
 }
 
-/* Cards layout */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 20px;
 }
 
-.card {
+.cardName {
   width: 100px;
   height: 100px;
   background-color: #ddd;
@@ -59,32 +87,72 @@ body {
   border: 2px solid #aaa;
 }
 
-/* Highlighted card */
 .highlight {
   background-color: yellow;
 }
 
-/* Result display */
 .display-container {
-  width: 200px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   border: 2px solid #888;
-  padding: 10px;
-  font-size: 20px;
-  color: gold;
-  font-weight: bold;
+  padding: 15px;
+  background-color: #fffbe6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Footer buttons */
+.result-status {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.result-status.win {
+  color: green;
+}
+
+.result-status.lose {
+  color: red;
+}
+
+.round-text {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.round-score {
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #ffe066;
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  color: #000;
+  margin: 0 auto;
+}
+
 footer {
   margin-top: 20px;
 }
 
-button {
+footer button {
   padding: 10px 15px;
   margin: 0 10px;
   border: 1px solid #000;
   background-color: white;
   cursor: pointer;
+}
+
+.footer-btn {
+  /* background-color: aquamarine; */
+  width: 37em;
+  display: flex;
+  justify-content: end;
 }
